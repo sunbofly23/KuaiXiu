@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="judou.ceicheng.com.computerprotect.SearchDetailActivity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_searchdetail_pic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/c1" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/back1"
+            android:layout_margin="10dp"
+            />
+
+    </FrameLayout>
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       >
+
+      <TextView
+          android:id="@+id/tv_searchdetail_intro"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:padding="10dp"
+          android:text="没看到莫斯科的思密达思密达思密达看什么的生命买多少买多少买多少美丽的啊飒飒"
+          android:ems="25"
+          android:textColor="#000"
+          android:textSize="10sp"
+        />
+     <ImageView
+         android:id="@+id/iv_share"
+         android:layout_width="20dp"
+         android:layout_height="20dp"
+         android:src="@drawable/share"
+         android:layout_centerVertical="true"
+         android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+
+         />
+
+   </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tv_searchdetail_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="￥9.9"
+        android:textColor="#cc4411"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_searchdetail_activity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tvbackground"
+        android:text="活动中"
+        android:textSize="5sp"
+        android:padding="2dp"
+        android:layout_centerVertical="true"
+        android:textColor="#880000"
+        android:layout_toRightOf="@+id/tv_searchdetail_price"
+        android:layout_marginLeft="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tvbackground"
+        android:text="淘金币抵2%"
+        android:textSize="5sp"
+        android:padding="2dp"
+        android:textColor="#CC4411"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tv_searchdetail_activity"
+        />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        >
+
+    <TextView
+          android:id="@+id/tv_kuaidi"
+          android:layout_width="0dp"
+           android:layout_weight="1"
+          android:layout_height="wrap_content"
+          android:text="快递:免运费"
+          android:textSize="10sp"
+          android:layout_gravity="right"
+          android:textColor="#515151"
+          />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:text="月销3000笔"
+        android:textSize="10sp"
+        android:gravity="center"
+        android:textColor="#515151"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:text="中国·北京"
+        android:textSize="10sp"
+        android:textColor="#515151"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_searchdetail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#c1c1c1"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/duigou" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="不支持无理由退货"
+            android:textColor="#515151"
+            android:textSize="10sp"
+
+            />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/duigou" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:text="公益宝贝"
+            android:textColor="#515151"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+
+
+        <TextView
+            android:id="@+id/com"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#c1c1c1"
+            android:gravity="center"
+            android:text="商品评论"
+            android:textSize="16sp" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_searchdetail_commment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+
+    <include
+        layout="@layout/item_searechdetail_bottom"
+        />
+
+    </FrameLayout>
+</LinearLayout>

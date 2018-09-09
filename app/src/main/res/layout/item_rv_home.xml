@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="21dp">
+
+    <ImageView
+        android:id="@+id/iv_authorhead"
+        android:layout_width="32dp"
+        android:layout_height="35dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/tv_authorname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="发布人"
+        android:textColor="#000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_authorhead"
+        app:layout_constraintLeft_toRightOf="@+id/iv_authorhead"
+        app:layout_constraintTop_toTopOf="@+id/iv_authorhead" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/dowm"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_words"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:text="生与死，苦难与苍老，都蕴涵在每一个人的体内，总有一天我们会与之遭逢。 我们终将浑然难分，像水溶于水中。"
+        android:textColor="#000"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_authorhead" />
+
+    <ImageView
+        android:id="@+id/iv_picture"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/ic_launcher_background"
+        app:layout_constraintDimensionRatio="16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_words" />
+
+    <View
+        android:id="@+id/view_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#474A4D"
+        android:layout_marginTop="2dp"
+        app:layout_constraintTop_toBottomOf="@+id/iv_picture"
+        />
+
+    <ImageView
+        android:id="@+id/iv_like"
+        android:layout_width="17dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/home1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_line" />
+
+    <TextView
+        android:id="@+id/tv_likecount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:text="0"
+        android:textColor="#919395"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_like"
+        app:layout_constraintLeft_toRightOf="@+id/iv_like"
+        app:layout_constraintTop_toBottomOf="@+id/view_line"
+        app:layout_constraintTop_toTopOf="@+id/iv_like" />
+
+
+    <ImageView
+        android:id="@+id/iv_comment"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/home2"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_like"
+        app:layout_constraintRight_toRightOf="@+id/iv_collect"
+        app:layout_constraintTop_toBottomOf="@+id/view_line" />
+
+    <TextView
+        android:id="@+id/tv_commentcount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:text="0"
+        android:textColor="#919395"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="@+id/iv_comment"
+        app:layout_constraintLeft_toRightOf="@+id/iv_comment"
+        app:layout_constraintTop_toBottomOf="@+id/view_line"
+        app:layout_constraintTop_toTopOf="@+id/iv_comment"
+
+        />
+
+
+    <ImageView
+        android:id="@+id/iv_collect"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/home3"
+        app:layout_constraintLeft_toLeftOf="@+id/iv_comment"
+        app:layout_constraintRight_toRightOf="@+id/iv_share"
+        app:layout_constraintTop_toBottomOf="@+id/view_line" />
+
+
+    <ImageView
+        android:id="@+id/iv_share"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="11dp"
+        android:src="@drawable/home4"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view_line" />
+
+     <LinearLayout
+         android:id="@+id/ll_comment"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal"
+         android:layout_margin="5dp"
+         app:layout_constraintTop_toBottomOf="@+id/iv_share"
+         android:visibility="gone"
+         android:background="@drawable/textviewborder">
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="很认真的评论:"
+             android:textColor="#F00"
+             />
+
+         <TextView
+             android:id="@+id/tv_comment"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text=""
+             android:textColor="#FFF"
+             />
+     </LinearLayout>
+
+
+
+
+</android.support.constraint.ConstraintLayout>
