@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.content.Intent
 import judou.ceicheng.com.computerprotect.util.FullScreen
 import judou.ceicheng.com.computerprotect.util.util
+import kotlinx.android.synthetic.main.activity_welcome.*
 import java.util.*
 
 
@@ -23,5 +24,13 @@ class WelcomeActivity : AppCompatActivity() {
             }
         }
         timer.schedule(task, 1000 * 2)
+
+        tv_tiaoguo.setOnClickListener {
+            startActivity(Intent(this,LoginActivity::class.java))
+        }
+
+
+
+
     }
 }
