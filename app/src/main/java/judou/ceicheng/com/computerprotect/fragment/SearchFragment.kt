@@ -1,22 +1,30 @@
 package judou.ceicheng.com.computerprotect.fragment
 
+import android.app.AlertDialog
 import android.app.Fragment
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.support.v4.view.GravityCompat
+import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.text.TextUtils
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import judou.ceicheng.com.computerprotect.FabuActivity
+import judou.ceicheng.com.computerprotect.LoginActivity
 import judou.ceicheng.com.computerprotect.R
+import judou.ceicheng.com.computerprotect.R.id.rv_search
+import judou.ceicheng.com.computerprotect.R.id.sousuo
 import judou.ceicheng.com.computerprotect.adapter.SearchAdapter
 import judou.ceicheng.com.computerprotect.bean.SearchRecyBean
 import judou.ceicheng.com.computerprotect.bean.SearchSelectBean
 import judou.ceicheng.com.computerprotect.window.SearchSelectedWindow
+import kotlinx.android.synthetic.main.activity_main1.*
 import kotlinx.android.synthetic.main.fragment_search.*
 
 
@@ -30,8 +38,6 @@ class SearchFragment : Fragment() {
     var beanList2: MutableList<SearchRecyBean> = ArrayList(2)
 
 
-
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_search, container, false)
@@ -39,64 +45,118 @@ class SearchFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        setHasOptionsMenu(true)
+        toolbar.setNavigationOnClickListener {
+            drawlayout?.openDrawer(GravityCompat.START)
+        }
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeAsUpIndicator(R.drawable.pichead)
+        }
+
+        nav_view.setCheckedItem(R.id.nav_call)
+        nav_view.setNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.nav_call->
+                    Toast.makeText(activity,it.title,Toast.LENGTH_SHORT).show()
+                R.id.nav_friend->
+                    Toast.makeText(activity,it.title,Toast.LENGTH_SHORT).show()
+                R.id.nav_location->
+                    Toast.makeText(activity,it.title,Toast.LENGTH_SHORT).show()
+                R.id.nav_mail->
+                    Toast.makeText(activity,it.title,Toast.LENGTH_SHORT).show()
+                R.id.nav_task->
+                    Toast.makeText(activity,it.title,Toast.LENGTH_SHORT).show()
+                R.id.nav_signout->{
+                    AlertDialog.Builder(activity)
+                            .setMessage("确定要退出吗?")
+                            .setPositiveButton("退出", DialogInterface.OnClickListener { _, _ ->
+                                startActivity(Intent(activity, LoginActivity::class.java))
+                            }
+                            )
+                            .setNegativeButton("取消", null)
+                            .create()
+                            .show()
+                }
+
+
+            }
+            return@setNavigationItemSelectedListener true
+        }
         initData()
-        rv_search.layoutManager = GridLayoutManager(activity, 2) as RecyclerView.LayoutManager?;
+        rv_search.layoutManager = GridLayoutManager(activity, 2)
         val a=SearchAdapter(beanList, this!!.activity!!)
         a.notifyDataSetChanged()
         rv_search.adapter=a
         initParam()
+    }
 
-        btn_search.setOnClickListener {
-            Toast.makeText(activity, "暂不支持店铺和品牌一起选择", Toast.LENGTH_SHORT).show()
-            if(beanList2.size>0){
-                for(i in  beanList2)
-                    beanList2.removeAt(0)
-            }
-            window= SearchSelectedWindow(activity,searchList)
-            window!!.showAsDropDown(btn_search)
-            window!!.setOnConfirmClickListener(SearchSelectedWindow.OnConfirmClickListener {
-                val sb: StringBuffer = StringBuffer()
-                for (fb in searchList) {
-                    val cdList = fb.getChildren()
-                    for (x in cdList.indices) {
-                        val children = cdList.get(x)
-                        if (children.isSelected)
-                            sb.append(children.getValue())
-                    }
-                }
-                if (!TextUtils.isEmpty(sb.toString())){
-                    for (i in beanList.indices) {
-                        if (beanList[i].shopname == sb.toString()) {
-                            beanList2.add(beanList[i])
-                            searchMethod(beanList2)
-                            break
-                        }
-                        if (beanList[i].brand == sb.toString()) {
-                            beanList2.add(beanList[i])
-                            searchMethod(beanList2)
-                            break
-                        }
-                    }
 
-            }
-            })
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        if (inflater != null) {
+            menu!!.clear()
+            inflater.inflate(R.menu.toolbar,menu)
         }
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if (item != null) {
+            when(item.itemId){
+                R.id.sousuo->{
+                    Toast.makeText(activity, "暂不支持店铺和品牌一起选择", Toast.LENGTH_SHORT).show()
+                    if(beanList2.size>0){
+                        for(i in  beanList2)
+                            beanList2.removeAt(0)
+                    }
+                    window= SearchSelectedWindow(activity,searchList)
+                    window!!.showAsDropDown(toolbar)
+                    window!!.setOnConfirmClickListener(SearchSelectedWindow.OnConfirmClickListener {
+                        val sb: StringBuffer = StringBuffer()
+                        for (fb in searchList) {
+                            val cdList = fb.getChildren()
+                            for (x in cdList.indices) {
+                                val children = cdList.get(x)
+                                if (children.isSelected)
+                                    sb.append(children.getValue())
+                            }
+                        }
+                        if (!TextUtils.isEmpty(sb.toString())){
+                            for (i in beanList.indices) {
+                                if (beanList[i].shopname == sb.toString()) {
+                                    beanList2.add(beanList[i])
+                                    searchMethod(beanList2)
+                                    break
+                                }
+                                if (beanList[i].brand == sb.toString()) {
+                                    beanList2.add(beanList[i])
+                                    searchMethod(beanList2)
+                                    break
+                                }
+                            }
+
+                        }
+                    })
+                }
+            }
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
     private  fun searchMethod(search :MutableList<SearchRecyBean>){
-        rv_search.layoutManager = LinearLayoutManager(activity)
+        rv_search.layoutManager = GridLayoutManager(activity, 1)
         val a = SearchAdapter(search, this!!.activity!!)
         a.notifyDataSetChanged()
         rv_search.adapter = a
-        btn_back.visibility=View.VISIBLE
-        btn_back.setOnClickListener{
-            initData()
-            rv_search.layoutManager = GridLayoutManager(activity, 2) as RecyclerView.LayoutManager?;
-            val a=SearchAdapter(beanList, this!!.activity!!)
-            a.notifyDataSetChanged()
-            rv_search.adapter=a
-            btn_back.visibility=View.GONE
-        }
+//            initData()
+//            rv_search.layoutManager = GridLayoutManager(activity, 2) as RecyclerView.LayoutManager?;
+//            val a1=SearchAdapter(beanList, this!!.activity!!)
+//            a.notifyDataSetChanged()
+//            rv_search.adapter=a1
+
     }
 
     //初始化搜索窗口数据

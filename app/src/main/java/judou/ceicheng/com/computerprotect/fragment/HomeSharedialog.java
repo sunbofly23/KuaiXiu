@@ -37,14 +37,7 @@ public class HomeSharedialog extends DialogFragment {
      * @return
      */
     public static HomeSharedialog getInstance(InterfaceExample mc){
-        if(dialog==null){
-            synchronized(HomeSharedialog.class){
-                if(dialog ==null){
-                    dialog = new HomeSharedialog(mc);
-                }
-            }
-        }
-        return dialog;
+        return new HomeSharedialog(mc);
     }
 
     /**

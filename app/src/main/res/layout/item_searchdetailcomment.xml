@@ -15,7 +15,7 @@
         android:layout_gravity="center"
         android:ems="20"
         android:padding="10dp"
-        android:text="s对这里不需要find view 也不需要用其它方式bind，直接import即可使用该view，并且也需要set其属性，直接等于就好"
+        android:text=""
         android:textColor="#000"
         android:textSize="12sp" />
 

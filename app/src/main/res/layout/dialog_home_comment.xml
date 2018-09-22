@@ -8,7 +8,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:background="#ccc"
         android:orientation="horizontal">
 
 
@@ -37,7 +36,6 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="#ccc"
         android:orientation="horizontal">
 
         <Button
@@ -45,17 +43,21 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textColor="#000"
+            android:background="#FFF"
             android:text="取消" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="2" />
 
         <Button
             android:id="@+id/btn_dialog_commit"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:background="#FFF"
             android:layout_weight="1"
             android:text="确定" />
 

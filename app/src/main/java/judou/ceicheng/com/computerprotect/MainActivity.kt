@@ -10,15 +10,18 @@ import android.net.Uri
 
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import judou.ceicheng.com.computerprotect.fragment.FixFragment
+import judou.ceicheng.com.computerprotect.fragment.Home2Fragment
 import judou.ceicheng.com.computerprotect.fragment.HomeFragment
 import judou.ceicheng.com.computerprotect.fragment.SearchFragment
 import kotlinx.android.synthetic.main.activity_main1.*
 import kotlinx.android.synthetic.main.bottom_main.*
 
-class MainActivity : BaseActivity(), View.OnClickListener, SearchFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener, FixFragment.OnFragmentInteractionListener{
+  class MainActivity : BaseActivity(), View.OnClickListener, SearchFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener, FixFragment.OnFragmentInteractionListener{
     override fun onFragmentInteraction(uri: Uri) {
 
     }
@@ -34,52 +37,15 @@ class MainActivity : BaseActivity(), View.OnClickListener, SearchFragment.OnFrag
         setContentView(R.layout.activity_main1)
         InitEvent()
         SetSelect(0)
-        setSupportActionBar(toolbar)
-        toolbar.setNavigationOnClickListener {
-            drawlayout?.openDrawer(GravityCompat.START)
-        }
-
-        val actionBar = supportActionBar
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true)
-            actionBar.setHomeAsUpIndicator(R.drawable.pichead)
-        }
-        nav_view.setCheckedItem(R.id.nav_call)
-        nav_view.setNavigationItemSelectedListener {
-               when(it.itemId){
-                 R.id.nav_call->
-                      Toast.makeText(this,it.title,Toast.LENGTH_SHORT).show()
-                   R.id.nav_friend->
-                       Toast.makeText(this,it.title,Toast.LENGTH_SHORT).show()
-                   R.id.nav_location->
-                       Toast.makeText(this,it.title,Toast.LENGTH_SHORT).show()
-                   R.id.nav_mail->
-                       Toast.makeText(this,it.title,Toast.LENGTH_SHORT).show()
-                   R.id.nav_task->
-                       Toast.makeText(this,it.title,Toast.LENGTH_SHORT).show()
-                   R.id.nav_signout->{
-                        AlertDialog.Builder(this)
-                                .setMessage("确定要退出吗?")
-                                .setPositiveButton("退出",DialogInterface.OnClickListener { _, _ ->
-                                        startActivity(Intent(this,LoginActivity::class.java))
-                                }
-                                )
-                                .setNegativeButton("取消", null)
-                                .create()
-                                .show()
-                   }
-
-
-               }
-            return@setNavigationItemSelectedListener true
-        }
     }
+
 
     private fun InitEvent() {
         ll_f1.setOnClickListener(this)
         ll_f2.setOnClickListener(this)
         ll_f3.setOnClickListener(this)
     }
+
 
     override fun onClick(v: View) {
         ResetImage()
