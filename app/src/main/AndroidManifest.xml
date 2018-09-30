@@ -7,6 +7,10 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
 
     <application
         android:allowBackup="true"
@@ -27,7 +31,21 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".SearchDetailActivity" />
         <activity android:name=".SimpleScannerActivity" />
-        <activity android:name=".FabuActivity"></activity>
+        <activity android:name=".FabuActivity" />
+        <activity android:name=".OrderActivity"></activity>
+
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="judou.ceicheng.com.computerprotect"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+
+
     </application>
 
 </manifest>

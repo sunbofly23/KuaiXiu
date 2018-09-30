@@ -96,15 +96,23 @@
             android:background="#FBC02D"
             android:text="加入购物车"
             android:textColor="#fff" />
-
         <Button
             android:id="@+id/btn_searchdetail_purchase"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="#F57F17"
+            android:text="微信扫描"
+            android:textColor="#fff" />
+        <Button
+            android:id="@+id/btn_buy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#FBC02D"
             android:text="立即购买"
             android:textColor="#fff" />
+
     </LinearLayout>
 
 </LinearLayout>

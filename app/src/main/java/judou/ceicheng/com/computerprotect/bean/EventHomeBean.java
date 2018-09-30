@@ -3,28 +3,35 @@ package judou.ceicheng.com.computerprotect.bean;
 import android.graphics.Bitmap;
 
 /**
- * Created by sunbo on 2018/9/9.
+ * Created by sunbo on 2018/9/26.
  */
 
-public class HomeBean {
+public class EventHomeBean {
+
     private String name;
     private String word;
     private int userpic;
-    private  int pic;
+    private Bitmap bitmap;
+    private String type;
 
-    public HomeBean() {
-
+    public String getType() {
+        return type;
     }
 
-    public HomeBean(String name, String word, int userpic, int pic) {
-        this.name = name;
-        this.word = word;
-        this.userpic = userpic;
-        this.pic = pic;
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {
         return name;
+    }
+
+    public EventHomeBean(String name,String word,String type,int userpic,Bitmap bitmap) {
+        this.name = name;
+        this.word = word;
+        this.userpic = userpic;
+        this.bitmap = bitmap;
+        this.type = type;
     }
 
     public void setName(String name) {
@@ -47,13 +54,11 @@ public class HomeBean {
         this.userpic = userpic;
     }
 
-    public int getPic() {
-        return pic;
+    public Bitmap getBitmap() {
+        return bitmap;
     }
 
-    public void setPic(int pic) {
-        this.pic = pic;
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
-
-
 }

@@ -2,28 +2,21 @@ package judou.ceicheng.com.computerprotect
 
 import android.Manifest
 import android.content.Intent
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import judou.ceicheng.com.computerprotect.adapter.SearchDetailCommentAdapter
 import kotlinx.android.synthetic.main.activity_search_detail.*
 import android.widget.Toast
-import android.Manifest.permission
-import android.Manifest.permission.READ_EXTERNAL_STORAGE
-import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-import android.Manifest.permission.ACCESS_FINE_LOCATION
-import android.Manifest.permission.CALL_PHONE
 import android.support.v4.app.ActivityCompat
 import android.os.Build
 import android.content.pm.PackageManager
 import android.support.v4.content.ContextCompat
 import android.app.Activity
-import android.support.annotation.NonNull
-import android.app.job.JobScheduler.RESULT_SUCCESS
 import kotlinx.android.synthetic.main.item_searechdetail_bottom.*
 
 
 class SearchDetailActivity : BaseActivity() {
+    private var shopprice:String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_detail)
@@ -35,28 +28,34 @@ class SearchDetailActivity : BaseActivity() {
     fun getData(){
         var img= intent.getIntExtra("img",R.drawable.ic_launcher_background)
         var shopintro=intent.getStringExtra("intro")
-        var shopprice=intent.getStringExtra("price")
+        shopprice=intent.getStringExtra("price")
         iv_searchdetail_pic.setImageResource(img)
         tv_searchdetail_intro.setText(shopintro)
         tv_searchdetail_price.setText(shopprice)
     }
 
     fun initEvent(){
-        iv_back.setOnClickListener{
+        rv_back.setOnClickListener{
             startActivity(Intent(this,MainActivity::class.java))
         }
         btn_searchdetail_purchase.setOnClickListener {
-            //点击购买
+            //点击微信
+            Toast.makeText(this, "买不起微信支付接口,跳到微信自行扫码付款~", Toast.LENGTH_SHORT).show()
             if (Build.VERSION.SDK_INT > 23) {
                 //申请动态权限啊兄弟
                 if (checkPermission(this))
                     ActivityCompat.requestPermissions(this, arrayOf( Manifest.permission.CAMERA), 1)
              else
                 startActivity(Intent(this,SimpleScannerActivity::class.java))
-                //finish()
-                //Toast.makeText(this@SearchDetailActivity, "直接进行逻辑", Toast.LENGTH_LONG).show()
             }
         }
+
+        btn_buy.setOnClickListener{
+            var intent =Intent(this,OrderActivity::class.java)
+            intent.putExtra("price",shopprice)
+            startActivity(intent)
+        }
+
     }
 
     fun checkPermission(activity: Activity): Boolean {

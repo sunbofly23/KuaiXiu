@@ -3,24 +3,32 @@ package judou.ceicheng.com.computerprotect.fragment
 
 import android.app.Fragment
 import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.google.zxing.common.BitArray
 import judou.ceicheng.com.computerprotect.FabuActivity
 import judou.ceicheng.com.computerprotect.R
 import judou.ceicheng.com.computerprotect.adapter.HomeAdapter
+import judou.ceicheng.com.computerprotect.bean.EventHomeBean
 import judou.ceicheng.com.computerprotect.bean.HomeBean
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home2.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 
- class Home2Fragment : Fragment() {
+class Home2Fragment : Fragment() {
 
     var list: MutableList<HomeBean> = ArrayList<HomeBean>()
-
+    var adapt:HomeAdapter?=null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -29,12 +37,35 @@ import kotlinx.android.synthetic.main.fragment_home2.*
 
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
+    }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        EventBus.getDefault().register(this)
         initRecyData()
         rv_home2.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        rv_home2.adapter= HomeAdapter(list, this!!.activity!!, fragmentManager)
+        adapt=HomeAdapter(list, this!!.activity!!, fragmentManager)
+        rv_home2.adapter= adapt
     }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun busEvent(eventBus: HomeBean) {
+        var name=eventBus.name
+        var question=eventBus.word
+        var pic=eventBus.userpic
+       // var bitmap=eventBus.bitmap
+
+       adapt!!.addItem(0,eventBus)
+
+        //Toast.makeText(activity,name+type+question, Toast.LENGTH_SHORT).show()
+    }
+
+
+
+
 
 
     fun initRecyData() {
@@ -48,10 +79,13 @@ import kotlinx.android.synthetic.main.fragment_home2.*
                 "我的电脑因为键盘进水，现在需要更换键盘，如果有懂这方面技术的可以联系我，电话是1008611，谢谢…")
         val userpics = intArrayOf(R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4
                 , R.drawable.pic5, R.drawable.pic6)
-        val pics = intArrayOf(R.drawable.pics1, R.drawable.pics2, R.drawable.pics3, R.drawable.pics4,
-                R.drawable.pics5, R.drawable.pics6)
+
+        val pics = intArrayOf(R.drawable.pics1, R.drawable.pics2, R.drawable.pics3, R.drawable.pics4
+                , R.drawable.pics5, R.drawable.pics6)
+
+
         var n: Int = 0
-        while (n < pics.size) {
+        while (n < words.size) {
             val stu = HomeBean()
             stu.word = words[n]
             stu.name = names[n]

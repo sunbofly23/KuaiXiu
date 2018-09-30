@@ -1,11 +1,10 @@
 package judou.ceicheng.com.computerprotect.adapter
 
+import android.app.Dialog
 import android.app.FragmentManager
 import android.content.Context
+import android.graphics.Bitmap
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.wx.goodview.GoodView
@@ -13,11 +12,21 @@ import judou.ceicheng.com.computerprotect.R
 import judou.ceicheng.com.computerprotect.bean.HomeBean
 import judou.ceicheng.com.computerprotect.fragment.HomeSharedialog
 import kotlinx.android.synthetic.main.item_rv_home.view.*
+import android.view.*
+import android.widget.LinearLayout
+import judou.ceicheng.com.computerprotect.bean.EventHomeBean
+import java.io.ByteArrayOutputStream
+import java.util.*
+
 
 /**
  * Created by sunbo on 2018/9/9.
  */
-class HomeAdapter(val items: List<HomeBean>, var context: Context, var fragment: FragmentManager) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class HomeAdapter(val items: MutableList<HomeBean>, var context: Context, var fragment: FragmentManager) : RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+    var dialog:Dialog?=null
+    var  btn1: LinearLayout?=null
+    var  btn2: LinearLayout?=null
+    var  btn3: LinearLayout?=null
 
     override fun getItemCount(): Int {
         if(items.isEmpty())
@@ -26,6 +35,12 @@ class HomeAdapter(val items: List<HomeBean>, var context: Context, var fragment:
        return items.size
     }
 
+
+     fun  addItem(pos:Int,date: HomeBean){
+         items.add(pos,date)
+         notifyItemInserted(pos)
+         notifyItemRangeChanged(pos,items.size-pos)//通知数据与界面重新绑定
+     }
 
     override fun onBindViewHolder(holder: HomeAdapter.ViewHolder, position: Int) {
         Glide.with(context).load(items[position].pic).into(holder.itemView.iv_picture)
@@ -43,7 +58,6 @@ class HomeAdapter(val items: List<HomeBean>, var context: Context, var fragment:
 
         holder.itemView.iv_comment.setOnClickListener {
             HomeSharedialog.getInstance(HomeSharedialog.InterfaceExample {
-
                 if(holder.itemView.ll_comment.visibility==View.GONE){
                     Toast.makeText(context,"评论成功",Toast.LENGTH_SHORT).show()
                     holder.itemView.ll_comment.visibility=View.VISIBLE;
@@ -55,7 +69,9 @@ class HomeAdapter(val items: List<HomeBean>, var context: Context, var fragment:
             }).show(fragment,"ffff")
         }
 
-
+        holder.itemView.iv_share.setOnClickListener {
+            showDialogShare()
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeAdapter.ViewHolder {
@@ -63,7 +79,44 @@ class HomeAdapter(val items: List<HomeBean>, var context: Context, var fragment:
         return HomeAdapter.ViewHolder(view)
     }
 
+    fun showDialogShare() {
+        dialog =  Dialog(context, R.style.ActionSheetDialogStyle)
+        //填充对话框的布局
+        var inflate:View = LayoutInflater.from(context).inflate(R.layout.layout_share, null)
+        //初始化控件
+        //将布局设置给Dialog
+        btn1=inflate!!.findViewById(R.id.ll_f1)
+        btn2 =inflate!!.findViewById(R.id.ll_f2)
+        btn3 =inflate!!.findViewById(R.id.ll_f3)
 
+        dialog!!.setContentView(inflate)
+        //获取当前Activity所在的窗体
+        var  dialogWindow : Window = dialog!!.getWindow()
+        if(false){
+            return
+        }
+        //设置Dialog从窗体底部弹出
+        dialogWindow.setGravity(Gravity.BOTTOM)
+        //获得窗体的属性
+        var lp: WindowManager.LayoutParams  = dialogWindow.getAttributes()
+        val dm = context.getResources().getDisplayMetrics()
+        lp.width=dm.widthPixels
+        lp.y = 20//设置Dialog距离底部的距离
+        //将属性设置给窗体
+        dialogWindow.setAttributes(lp)
+        dialog!!.show()//显示对话框
+
+        btn1!!.setOnClickListener {
+            Toast.makeText(context,"分享微博",Toast.LENGTH_SHORT).show()
+        }
+        btn2!!.setOnClickListener {
+            Toast.makeText(context,"分享微信",Toast.LENGTH_SHORT).show()
+        }
+        btn3!!.setOnClickListener {
+            Toast.makeText(context,"分享QQ",Toast.LENGTH_SHORT).show()
+        }
+
+    }
 
     class ViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView)
 

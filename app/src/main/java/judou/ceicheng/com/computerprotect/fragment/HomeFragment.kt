@@ -5,9 +5,11 @@ import android.app.FragmentManager
 import android.app.FragmentTransaction
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import judou.ceicheng.com.computerprotect.FabuActivity
 
@@ -15,8 +17,13 @@ import judou.ceicheng.com.computerprotect.R
 import judou.ceicheng.com.computerprotect.bean.HomeBean
 import kotlinx.android.synthetic.main.fragment_home.*
 import android.view.LayoutInflater
+import android.widget.Toast
 import judou.ceicheng.com.computerprotect.R.layout.fragment_search
+import judou.ceicheng.com.computerprotect.bean.EventHomeBean
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 
 /**
@@ -37,11 +44,11 @@ class HomeFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         iv_fabu.setOnClickListener { startActivity(Intent(activity,FabuActivity::class.java)) }
         showFragmentZuiXin(0)
         tv_zuixin.setOnClickListener {
@@ -60,7 +67,6 @@ class HomeFragment : Fragment() {
                 showFragmentZuiXin(1)
                 }
             }
-
 
 
     fun showFragmentZuiXin(i:Int){
@@ -97,10 +103,7 @@ class HomeFragment : Fragment() {
         if (fragment != null) {
             fragmentTransaction.hide(fragment)
         }
-
     }
-
-
 
 
 

@@ -38,4 +38,5 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.wx.goodview:goodview:1.0.0'
     implementation 'com.android.support:mediarouter-v7:27.1.1'
+    compile 'org.greenrobot:eventbus:3.0.0'
 }

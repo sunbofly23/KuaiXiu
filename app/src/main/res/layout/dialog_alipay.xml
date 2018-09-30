@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="30dp"
+    android:orientation="vertical">
+
+    <!--手机号码栏-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="3dp"
+            android:text="请输入支付密码" />
+
+        <EditText
+            android:id="@+id/et_text"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:background="@null"
+            android:inputType="number"
+            android:maxLength="5"
+            android:visibility="visible" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="7dp"
+        android:gravity="center">
+
+        <!--验证码输入栏-->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/tvCode1"
+                style="@style/code_text_style" />
+
+            <ImageView style="@style/vertical_line_style" />
+
+            <TextView
+                android:id="@+id/tvCode2"
+                style="@style/code_text_style" />
+
+            <ImageView style="@style/vertical_line_style" />
+
+            <TextView
+                android:id="@+id/tvCode3"
+                style="@style/code_text_style" />
+
+            <ImageView style="@style/vertical_line_style" />
+
+            <TextView
+                android:id="@+id/tvCode4"
+                style="@style/code_text_style" />
+
+            <ImageView style="@style/vertical_line_style" />
+
+            <TextView
+                android:id="@+id/tvCode5"
+                style="@style/code_text_style" />
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+    <!--下一步按钮-->
+    <Button
+        android:id="@+id/btn_in"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:background="@color/colorPrimary"
+        android:textSize="14sp"
+        android:text="下一步" />
+
+</LinearLayout>

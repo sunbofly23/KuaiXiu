@@ -2,6 +2,8 @@ package judou.ceicheng.com.computerprotect.fragment
 
 
 import android.app.Fragment
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
@@ -47,15 +49,17 @@ class Home3Fragment : Fragment() {
                 "用了一段时间才来评论哦！很棒！超高性价比！开机十秒！选的磨砂黑也很赞！客服也很热情❤️跑分十万，这个价格值了")
         val userpics=intArrayOf(R.drawable.pic1,R.drawable.pic2,R.drawable.pic3,R.drawable.pic4
                 ,R.drawable.pic5,R.drawable.pic6)
-        val pics= intArrayOf(R.drawable.t1,R.drawable.t2,R.drawable.t3,R.drawable.t4,
-                R.drawable.t5,R.drawable.t6)
+
+        val pics = intArrayOf(R.drawable.t1, R.drawable.t2, R.drawable.t3, R.drawable.t4
+                , R.drawable.t5, R.drawable.t6)
+
         var n:Int=0
-        while(n <pics.size){
+        while(n <words.size){
             val stu = HomeBean()
             stu.word=words[n]
             stu.name=names[n]
             stu.userpic=userpics[n]
-            stu.pic=pics[n]
+            stu.pic= pics[n]
             list.add(stu)
             n++
         }

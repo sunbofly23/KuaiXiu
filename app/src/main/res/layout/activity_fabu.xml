@@ -6,4 +6,149 @@
     android:layout_height="match_parent"
     tools:context="judou.ceicheng.com.computerprotect.FabuActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_fabu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#555">
+
+        <ImageView
+            android:id="@+id/iv_back1"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/back"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="18dp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布消息"
+            android:textColor="#FFF"
+            android:layout_gravity="center"
+            />
+
+
+        <TextView
+            android:id="@+id/tv_queding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"
+            android:text="确定"
+            android:textColor="#FFF"
+          />
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/tx_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:text="账号"
+        android:textColor="#000"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_fabu"
+       />
+
+    <TextView
+        android:id="@+id/tx_person"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/etbg"
+        android:text="kuaixiu"
+        android:textColor="#555"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toRightOf="@+id/tx_name"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_fabu" />
+
+
+    <TextView
+        android:id="@+id/tx_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="问题"
+        android:textColor="#000"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_name"
+        />
+
+    <EditText
+        android:id="@+id/et_question"
+        android:layout_width="230dp"
+        android:layout_height="130dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/etbg"
+        android:ellipsize="end"
+        android:gravity="start"
+        android:hint="请输入你在电脑方面遇到的难题"
+        android:text=""
+        android:textSize="14sp"
+        app:layout_constraintLeft_toRightOf="@+id/tx_question"
+        app:layout_constraintTop_toBottomOf="@+id/tx_person" />
+
+
+    <TextView
+        android:id="@+id/tx_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="类型"
+        android:textColor="#000"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_question"
+       />
+
+
+    <TextView
+        android:id="@+id/tx_zuixin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/etbg"
+        android:text="最新"
+        android:textColor="#555"
+        android:textSize="16sp"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tx_type"
+        app:layout_constraintLeft_toRightOf="@+id/tx_type"
+        app:layout_constraintTop_toBottomOf="@+id/et_question" />
+
+
+
+    <TextView
+        android:id="@+id/tx_pic"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="图片"
+        android:textColor="#000"
+        android:textSize="16sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_type" />
+
+    <ImageView
+        android:id="@+id/iv_pic"
+        android:layout_width="230dp"
+        android:layout_height="210dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/moren"
+        app:layout_constraintLeft_toRightOf="@+id/tx_pic"
+        app:layout_constraintTop_toBottomOf="@+id/tx_zuixin" />
+
+
+
 </android.support.constraint.ConstraintLayout>

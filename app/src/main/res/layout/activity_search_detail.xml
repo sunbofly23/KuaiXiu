@@ -18,14 +18,18 @@
             android:layout_height="wrap_content"
             android:src="@drawable/c1" />
 
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:src="@drawable/back1"
-            android:layout_margin="10dp"
-            />
+        <RelativeLayout
+            android:id="@+id/rv_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp">
 
+            <ImageView
+                android:id="@+id/iv_back"
+                android:layout_width="25dp"
+                android:layout_height="20dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/back1" />
+        </RelativeLayout>
     </FrameLayout>
 
    <RelativeLayout

@@ -27,6 +27,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         tv_tiaoguo.setOnClickListener {
             startActivity(Intent(this,LoginActivity::class.java))
+            timer.cancel()
         }
     }
 }

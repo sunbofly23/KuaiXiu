@@ -6,22 +6,28 @@ import android.app.FragmentManager
 import android.app.FragmentTransaction
 import android.content.DialogInterface
 import android.content.Intent
+import android.graphics.Bitmap
 import android.net.Uri
 
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import judou.ceicheng.com.computerprotect.bean.EventHomeBean
 import judou.ceicheng.com.computerprotect.fragment.FixFragment
 import judou.ceicheng.com.computerprotect.fragment.Home2Fragment
 import judou.ceicheng.com.computerprotect.fragment.HomeFragment
 import judou.ceicheng.com.computerprotect.fragment.SearchFragment
 import kotlinx.android.synthetic.main.activity_main1.*
 import kotlinx.android.synthetic.main.bottom_main.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
-  class MainActivity : BaseActivity(), View.OnClickListener, SearchFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener, FixFragment.OnFragmentInteractionListener{
+class MainActivity : BaseActivity(), View.OnClickListener, SearchFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener, FixFragment.OnFragmentInteractionListener{
     override fun onFragmentInteraction(uri: Uri) {
 
     }
@@ -38,6 +44,8 @@ import kotlinx.android.synthetic.main.bottom_main.*
         InitEvent()
         SetSelect(0)
     }
+
+
 
 
     private fun InitEvent() {
@@ -101,6 +109,7 @@ import kotlinx.android.synthetic.main.bottom_main.*
         }
         fragmentTransaction.commit()
     }
+
 
 
     fun HideFragement() {
