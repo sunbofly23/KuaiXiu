@@ -8,7 +8,9 @@ import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.support.annotation.RequiresApi
 import android.util.Log
 import android.view.*
 import judou.ceicheng.com.computerprotect.FabuActivity
@@ -39,6 +41,9 @@ class HomeFragment : Fragment() {
     var fragment: Fragment? = null
     var fragment1: Fragment? = null
     lateinit var fragmentTransaction: FragmentTransaction
+    private val FRAGMENT_TAG = arrayOf("home1", "home2")
+    private var selindex=0
+    private val PRV_SELINDEX = "PREV_SELINDEX"
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -46,8 +51,17 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        var fragmentManager:FragmentManager = fragmentManager
+
+        if(savedInstanceState !=null){
+            selindex=savedInstanceState.getInt(PRV_SELINDEX,selindex)
+            fragment=fragmentManager.findFragmentByTag(FRAGMENT_TAG[0])
+            fragment1=fragmentManager.findFragmentByTag(FRAGMENT_TAG[1])
+        }
+        showFragmentZuiXin(selindex)
 
         iv_fabu.setOnClickListener { startActivity(Intent(activity,FabuActivity::class.java)) }
         showFragmentZuiXin(0)
@@ -68,6 +82,11 @@ class HomeFragment : Fragment() {
                 }
             }
 
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState!!.putInt(PRV_SELINDEX,selindex)
+        super.onSaveInstanceState(outState)
+    }
 
     fun showFragmentZuiXin(i:Int){
         val  fragmentManager:FragmentManager = this.fragmentManager

@@ -1,31 +1,17 @@
 package judou.ceicheng.com.computerprotect
 
-import android.app.AlertDialog
 import android.app.Fragment
 import android.app.FragmentManager
 import android.app.FragmentTransaction
-import android.content.DialogInterface
-import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 
 import android.os.Bundle
-import android.support.v4.view.GravityCompat
-import android.util.Log
-import android.view.Menu
-import android.view.MenuItem
+import android.os.PersistableBundle
 import android.view.View
-import android.widget.Toast
-import judou.ceicheng.com.computerprotect.bean.EventHomeBean
 import judou.ceicheng.com.computerprotect.fragment.FixFragment
-import judou.ceicheng.com.computerprotect.fragment.Home2Fragment
 import judou.ceicheng.com.computerprotect.fragment.HomeFragment
 import judou.ceicheng.com.computerprotect.fragment.SearchFragment
-import kotlinx.android.synthetic.main.activity_main1.*
 import kotlinx.android.synthetic.main.bottom_main.*
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import org.greenrobot.eventbus.ThreadMode
 
 class MainActivity : BaseActivity(), View.OnClickListener, SearchFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener, FixFragment.OnFragmentInteractionListener{
     override fun onFragmentInteraction(uri: Uri) {
@@ -36,17 +22,29 @@ class MainActivity : BaseActivity(), View.OnClickListener, SearchFragment.OnFrag
     internal var fragment_home: Fragment? = null
     internal var fragment_fix: Fragment? = null
     lateinit var fragmentTransaction: FragmentTransaction
-
+    private val FRAGMENT_TAG = arrayOf("search", "home", "fix")
+    private var selindex=0;
+    private val PRV_SELINDEX = "PREV_SELINDEX"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main1)
         InitEvent()
-        SetSelect(0)
+        var fragmentManager:FragmentManager = fragmentManager
+        if(savedInstanceState !=null){
+            selindex=savedInstanceState.getInt(PRV_SELINDEX,selindex)
+            fragment_search=fragmentManager.findFragmentByTag(FRAGMENT_TAG[0])
+            fragment_home=fragmentManager.findFragmentByTag(FRAGMENT_TAG[1])
+            fragment_fix=fragmentManager.findFragmentByTag(FRAGMENT_TAG[2])
+        }
+
+        SetSelect(selindex)
     }
 
-
-
+    override fun onSaveInstanceState(outState: Bundle?, outPersistentState: PersistableBundle?) {
+        outState!!.putInt(PRV_SELINDEX,selindex)
+        super.onSaveInstanceState(outState, outPersistentState)
+    }
 
     private fun InitEvent() {
         ll_f1.setOnClickListener(this)

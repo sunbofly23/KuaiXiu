@@ -12,7 +12,6 @@ import android.text.TextUtils
 import android.view.*
 import kotlinx.android.synthetic.main.activity_fabu.*
 import android.widget.Toast
-import judou.ceicheng.com.computerprotect.bean.EventHomeBean
 import org.greenrobot.eventbus.EventBus
 import android.provider.MediaStore
 import android.widget.Button

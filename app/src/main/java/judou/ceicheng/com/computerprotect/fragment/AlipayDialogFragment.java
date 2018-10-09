@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -61,9 +63,12 @@ public class AlipayDialogFragment extends DialogFragment {
         super.onStart();
         Dialog dialog = getDialog();
         if (dialog != null) {
-            DisplayMetrics dm = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-            dialog.getWindow().setLayout((int) (dm.widthPixels /1.5),(int) (dm.heightPixels * 0.25));
+            WindowManager.LayoutParams lp=dialog.getWindow().getAttributes();
+            DisplayMetrics dm=getActivity().getResources().getDisplayMetrics();
+            lp.width=dm.widthPixels;
+            //lp.height=
+            dialog.getWindow().setAttributes(lp);
+            dialog.getWindow().setGravity(Gravity.CENTER);
         }
     }
 

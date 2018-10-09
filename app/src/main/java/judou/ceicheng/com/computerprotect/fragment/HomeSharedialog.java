@@ -5,9 +5,11 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -59,9 +61,12 @@ public class HomeSharedialog extends DialogFragment {
         super.onStart();
         Dialog dialog = getDialog();
         if (dialog != null) {
-            DisplayMetrics dm = new DisplayMetrics();
-            getActivity().getWindowManager().getDefaultDisplay().getMetrics(dm);
-            dialog.getWindow().setLayout((int) (dm.widthPixels * 1),(int) (dm.heightPixels * 0.2));
+            WindowManager.LayoutParams lp=dialog.getWindow().getAttributes();
+            DisplayMetrics dm=getActivity().getResources().getDisplayMetrics();
+            lp.width=dm.widthPixels;
+            //lp.height=
+            dialog.getWindow().setAttributes(lp);
+            dialog.getWindow().setGravity(Gravity.CENTER);
         }
     }
 
