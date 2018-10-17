@@ -14,6 +14,16 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'armeabi-v7a', 'x86_64'
+            universalApk true
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -39,4 +49,7 @@ dependencies {
     compile 'com.wx.goodview:goodview:1.0.0'
     implementation 'com.android.support:mediarouter-v7:27.1.1'
     compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.android.support:design:27.1.1'
+    compile 'com.android.support:support-v4:27.1.1'
+    implementation files('libs/AMap3DMap_6.5.0_AMapLocation_4.2.0_20180930.jar')
 }

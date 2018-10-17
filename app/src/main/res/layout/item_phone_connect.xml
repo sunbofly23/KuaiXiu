@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="15dp"
+        >
+
+        <TextView
+            android:id="@+id/tv_day"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="厂商:"
+            android:textColor="#6a6969"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/tv_workplace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="联想"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_day"
+            android:textColor="#a4c639"
+            android:textSize="14sp" />
+
+
+
+
+
+        <TextView
+            android:id="@+id/tv_way"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/tv_day"
+            android:layout_below="@+id/tv_day"
+            android:layout_marginTop="10dp"
+            android:text="地址:"
+            android:textColor="#6a6969"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京市海淀区知春路甲56号卫星大厦7层"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_way"
+            android:layout_alignBaseline="@+id/tv_way"
+            android:textColor="#a4c639"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_sumtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_way"
+            android:layout_marginTop="12dp"
+            android:text="电话:"
+            android:textColor="#6a6969"
+            android:textSize="14sp" />
+
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="15541160738"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_sumtime"
+            android:layout_alignBaseline="@+id/tv_sumtime"
+            android:textColor="#a4c639"
+            android:textSize="14sp" />
+
+
+
+    </RelativeLayout>
+
+
+</LinearLayout>
