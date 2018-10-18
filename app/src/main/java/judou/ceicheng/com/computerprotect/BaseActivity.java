@@ -1,9 +1,20 @@
 package judou.ceicheng.com.computerprotect;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @Class BaseActivity
@@ -13,6 +24,7 @@ import android.widget.Toast;
  */
 public abstract class BaseActivity extends AppCompatActivity {
     private long exitTime = 0;
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if(keyCode==KeyEvent.KEYCODE_BACK&&event.getAction()==KeyEvent.ACTION_DOWN){
@@ -29,4 +41,9 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
+
+
+
+
+
 }

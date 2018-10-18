@@ -1,13 +1,25 @@
 package judou.ceicheng.com.computerprotect
 
+import android.Manifest
+import android.app.Activity
 import android.app.Fragment
 import android.app.FragmentManager
 import android.app.FragmentTransaction
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.Uri
+import android.os.Build
 
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.support.annotation.RequiresApi
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.ActivityCompat.requestPermissions
+import android.support.v4.content.ContextCompat
 import android.view.View
+import android.widget.Toast
+import judou.ceicheng.com.computerprotect.R.id.iv_f1
+import judou.ceicheng.com.computerprotect.R.id.iv_f2
 import judou.ceicheng.com.computerprotect.fragment.FixFragment
 import judou.ceicheng.com.computerprotect.fragment.HomeFragment
 import judou.ceicheng.com.computerprotect.fragment.SearchFragment
@@ -53,14 +65,41 @@ class MainActivity : BaseActivity(), View.OnClickListener, SearchFragment.OnFrag
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onClick(v: View) {
         ResetImage()
         when (v.id) {
             R.id.ll_f1 -> SetSelect(0)
             R.id.ll_f2 -> SetSelect(1)
-            R.id.ll_f3 -> SetSelect(2)
+            R.id.ll_f3 ->
+                if (Build.VERSION.SDK_INT > 23) {
+                    //申请动态权限啊兄弟
+                    if (checkPermission(this))
+                        ActivityCompat.requestPermissions(this, arrayOf( Manifest.permission.ACCESS_COARSE_LOCATION), 1)
+                    else
+                        SetSelect(2)
+                }
+
         }
     }
+
+    fun checkPermission(activity: Activity): Boolean {
+        return (ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED)
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        when (requestCode) {
+            1 -> if (grantResults.size >= 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //权限被用户同意了，执行后面逻辑
+             SetSelect(2)
+                //finish()
+            } else
+                Toast.makeText(this, "用户否定了这个权限", Toast.LENGTH_LONG).show()
+        }
+    }
+
 
 
     private fun ResetImage() {

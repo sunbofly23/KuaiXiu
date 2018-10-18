@@ -19,7 +19,7 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun initEvent() {
         iv_back.setOnClickListener {
-            startActivity(Intent(this,LoginActivity::class.java))
+           finish()
         }
         btn_regitser.setOnClickListener {
             val username=et_username.text.toString()
@@ -38,6 +38,7 @@ class RegisterActivity : AppCompatActivity() {
                     if(username.equals("kuaixiu")&&password.equals("android258")) {
                         util.Toastshow(this,"注册成功")
                         startActivity(Intent(this, LoginActivity::class.java))
+                        finish()
                     }
                     else
                         util.Toastshow(this,"注册失败，请使用测试账号")

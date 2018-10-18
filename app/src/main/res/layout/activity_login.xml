@@ -231,7 +231,7 @@
 
 
       <TextView
-          android:text="快修·kuaixiu.kx"
+          android:text="易选·yixuan.yx"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_marginBottom="30dp"

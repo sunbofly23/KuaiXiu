@@ -1,7 +1,12 @@
 package judou.ceicheng.com.computerprotect.adapter;
 
+import android.Manifest;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.pm.PackageManager;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 
 import judou.ceicheng.com.computerprotect.fragment.BlankFragment;
 import judou.ceicheng.com.computerprotect.fragment.BlankFragment2;
@@ -33,4 +38,6 @@ public class MyFragmentStatePagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return tabTilte.length;
     }
+
+
 }

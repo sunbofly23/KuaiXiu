@@ -74,6 +74,7 @@ class SearchFragment : Fragment() {
                             .setMessage("确定要退出吗?")
                             .setPositiveButton("退出", DialogInterface.OnClickListener { _, _ ->
                                 startActivity(Intent(activity, LoginActivity::class.java))
+                                activity.finish()
                             }
                             )
                             .setNegativeButton("取消", null)
