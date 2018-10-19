@@ -9,6 +9,14 @@
     </style>
 
 
+    <style name="Theme.MyAppTheme" parent="AppTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowBackground">@drawable/welcome</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+
     <!--登陆 输入验证码edit style-->
     <style name="code_text_style">
         <item name="android:layout_width">20dp</item>
