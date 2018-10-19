@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="@+id/bg"
         app:layout_constraintBottom_toBottomOf="@+id/bg"
         app:layout_constraintLeft_toLeftOf="@+id/bg"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         />
 
     <LinearLayout
@@ -47,30 +47,33 @@
 
         <TextView
             android:id="@+id/type"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="拍卖悬赏"
+            android:textSize="14sp"
             android:textColor="#FFF" />
 
         <TextView
             android:id="@+id/word"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:layout_weight="2"
             android:maxWidth="156dp"
             android:text="外星人英雄联盟S8珍藏版高配置笔记本，低价20000人民币"
-            android:textColor="#FFF" />
+            android:textColor="#FFF"
+            android:textSize="14sp"/>
 
 
         <TextView
             android:id="@+id/phone"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
             android:text="15145468125"
+            android:textSize="14sp"
             android:textColor="#FFF" />
 
     </LinearLayout>
