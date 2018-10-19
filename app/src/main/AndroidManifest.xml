@@ -29,8 +29,10 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MyAppTheme">
-        <activity android:name=".WelcomeActivity">
+        android:theme="@style/AppTheme">
+        <activity android:name=".WelcomeActivity"
+            android:theme="@style/AppTheme.Splash"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
